@@ -3,9 +3,10 @@ const app=express();
 const apiRoutes=require('./routes/index');
 const bodyParser=require('body-parser');
 
+
 const {PORT}=require('./config/serverConfig')
  startServer=async ()=>{
-
+  
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended:true}));
     app.use('/api',apiRoutes);
