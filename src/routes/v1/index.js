@@ -6,5 +6,6 @@ const router=express.Router();
 
 router.post('/signUp',authMiddleware.validateAuth,userController.create);
 router.post('/signIn',authMiddleware.validateAuth,userController.singIn);
+router.get('/isAuthenticated',userController.isAuthenticated)
 
 module.exports=router;

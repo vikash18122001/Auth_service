@@ -49,7 +49,21 @@ class userService{
             const result= jwt.verify(token,JWT_KEY);
             return result;
         } catch (error) {
+            
             console.log("something went wrong in token validation",error);
+            throw error;
+        }
+    }
+    async isAuthenticated(token){
+        try {
+            const response=this.verifyToken(token);
+            if(!response)throw {error: 
+            'invalid token'};
+            const user=this.UserRepository.getById(response.id);
+            if(!user)throw {error: 'no user with the corresponding token'};
+            return user.id;
+        } catch (error) {
+            console.log("something went wrong in auth process");
             throw error;
         }
     }
