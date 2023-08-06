@@ -10,6 +10,18 @@ const validateAuth=async (req,res,next)=>{
     }
     next();
 }
+const validateAdminRequest=async (req,res,next)=>{
+    if(!req.body.id){
+        return res.status(400).json({
+            data:{},
+            error:'missing user id',
+            message:'something went wrong',
+            success:false
+        })
+    }
+    next();
+}
 module.exports={
-    validateAuth
+    validateAuth,
+    validateAdminRequest
 }

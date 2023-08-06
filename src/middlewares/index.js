@@ -1,3 +1,4 @@
 module.exports={
-    authMiddleware:require('./validateAuth')
+    authMiddleware:require('./validateAuth'),
+    
 }
