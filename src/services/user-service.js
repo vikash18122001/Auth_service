@@ -12,6 +12,9 @@ class userService{
             const user=await this.UserRepository.create(data);
             return user;
         } catch (error) {
+            if(error.name=='SequelizeValidationError'){
+                throw error;
+            }
             console.log('something went wrong in service layer');
             throw {error};
         }
@@ -72,6 +75,7 @@ class userService{
         try {
             return bcrypt.compareSync(userInputPlainPassword,encryptedPassword); 
         } catch (error) {
+            
             console.log("something went wrong in  password comparism");
             throw error;
         }
